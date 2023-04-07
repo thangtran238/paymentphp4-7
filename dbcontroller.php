@@ -2,8 +2,8 @@
 class DBController {
 	private $host = "localhost";
 	private $user = "root";
-	private $password = "";
-	private $database = "testpayment";
+	private $password = "123123";
+	private $database = "bt_shopping_cart";
 	private $conn;
 	
 	function __construct() {
