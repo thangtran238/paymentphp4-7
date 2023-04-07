@@ -1,3 +1,19 @@
+<?php
+$Total =(int)$_COOKIE["Total"];
+require "dbcontroller.php";
+$conn= new  DBController();
+$conn=$conn->connectDB_S("data_user");
+
+if(isset($_POST["check"])):
+  $name=$_POST["name"];
+  $sery=$_POST["pswd"];
+  $pincode=$_POST["code"];
+  
+
+
+
+endif;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,25 +27,26 @@
 
 <div class="container mt-3">
   <h2>Checkout</h2>
-  <form action="">
+   <form action="" method="post" class="col-md-4">
     <div class="mb-3 mt-3">
       <label for="email">Name:</label>
-      <input type="name" class="form-control" id="name" placeholder="name" name="name">
+      <input type="name" class="form-control" id="name" placeholder="name" name="name" required>
     </div>
     <div class="mb-3">
       <label for="pwd">Serial Number:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Serial Number" name="pswd">
+      <input type="password" class="form-control" id="pwd" placeholder="Serial Number" name="pswd" required>
     </div>
 	<div class="mb-3">
       <label for="pwd">Pin Code:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Pin Code" name="pswd">
+      <input type="password" class="form-control" id="pwd" placeholder="Pin Code" name="code" required>
     </div>
     <div class="form-check mb-3">
       <label class="form-check-label">
         <input class="form-check-input" type="checkbox" name="remember"> Remember me
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">Checkout</button>
+    <p class="text-title">Total: <?php  echo "$ " . number_format($Total, 2); ?></p>
+    <button type="submit" class="btn btn-primary" name="check">Checkout</button>
   </form>
   <style>
 	input{

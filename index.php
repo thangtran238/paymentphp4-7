@@ -7,7 +7,11 @@ if (!empty($_GET["action"])) {
 		case "add":
 			if (!empty($_POST["quantity"])) {
 				$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");
-				$itemArray = array($productByCode[0]["code"] => array('name' => $productByCode[0]["name"], 'code' => $productByCode[0]["code"], 'quantity' => $_POST["quantity"], 'price' => $productByCode[0]["price"], 'image' => $productByCode[0]["image"]));
+				$itemArray = array($productByCode[0]["code"] => array('name' => $productByCode[0]["name"], 
+																	   'code' => $productByCode[0]["code"], 
+																	   'quantity' => $_POST["quantity"], 
+																	   'price' => $productByCode[0]["price"], 
+																	   'image' => $productByCode[0]["image"]));
 
 				if (!empty($_SESSION["cart_item"])) {
 					if (in_array($productByCode[0]["code"], array_keys($_SESSION["cart_item"]))) {
@@ -94,7 +98,8 @@ if (!empty($_GET["action"])) {
 						<td align="right"><?php echo $total_quantity; ?></td>
 						<td align="right" colspan="2"><strong><?php echo "$ " . number_format($total_price, 2); ?></strong></td>
 						<td></td>
-						<td colspan="1" ><a href="pay_page.php?"><button ></button></a></td>
+						<?php setcookie("Total", $total_price);?> 
+						<td colspan="1" ><a href="checkout.php"><button >checkout</button></a></td>
 					</tr>
 				</tfoot>
 			</table>
