@@ -6,16 +6,11 @@ class DBController {
 	private $database = "bt_shopping_cart";
 	private $conn;
 	
-	function __construct() {
+	function __construct(){
 		$this->conn = $this->connectDB();
 	}
-	
 	function connectDB() {
 		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
-		return $conn;
-	}
-	function connectDB_S($dbname){
-		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database=$dbname);
 		return $conn;
 	}
 	
