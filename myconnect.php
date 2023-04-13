@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "123123";
-$database = "data_user";
+$password = "";
+$database = "testpayment";
 $conn = mysqli_connect($host,$user,$password,$database);
 if(!$conn){
     die("have errors");
