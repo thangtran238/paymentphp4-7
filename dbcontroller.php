@@ -2,14 +2,13 @@
 class DBController {
 	private $host = "localhost";
 	private $user = "root";
-	private $password = "";
-	private $database = "testpayment";
+	private $password = "123123";
+	private $database = "bt_shopping_cart";
 	private $conn;
 	
-	function __construct() {
+	function __construct(){
 		$this->conn = $this->connectDB();
 	}
-	
 	function connectDB() {
 		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
 		return $conn;
@@ -20,8 +19,9 @@ class DBController {
 		while($row=mysqli_fetch_assoc($result)) {
 			$resultset[] = $row;
 		}		
-		if(!empty($resultset))
+		if(!empty($resultset)):
 			return $resultset;
+		endif;
 	}
 	
 	function numRows($query) {
